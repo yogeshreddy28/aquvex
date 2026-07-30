@@ -1,29 +1,220 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AQUVEX</title>
-  <style>
-    body{
-      margin:0;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      font-family:Arial,sans-serif;
-      background:#0b1f33;
-      color:white;
-      text-align:center;
-    }
-    h1{font-size:3rem;margin:0;}
-    p{font-size:1.2rem;color:#ccc;}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AQUVEX provides professional terrace waterproofing, leak repair, crack treatment and inspections with transparent pricing and long-lasting protection.">
+  <meta name="theme-color" content="#061a33">
+  <meta property="og:title" content="AQUVEX | Professional Terrace Waterproofing">
+  <meta property="og:description" content="Protect your home before the next monsoon. Book a free waterproofing inspection.">
+  <meta property="og:type" content="website">
+  <title>AQUVEX | Professional Terrace Waterproofing</title>
+  <link rel="preload" href="assets/images/hero-monsoon.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/script.js" defer></script>
 </head>
 <body>
-  <div>
-    <h1>AQUVEX</h1>
-    <p>Official Website Coming Soon</p>
-  </div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Site header -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="AQUVEX home">
+        <img src="assets/images/logo-circle.webp" alt="" width="192" height="192">
+        <span>AQUVEX<small>Waterproofing</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <span class="sr-only">Open navigation</span><span></span><span></span>
+      </button>
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+        <a href="#why">Why it matters</a><a href="#process">Process</a><a href="#services">Services</a><a href="#stories">Stories</a>
+        <a class="button button-small" href="#inspection-form" data-inspection-open>Free inspection</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <img class="hero-media" src="assets/images/hero-monsoon.webp" alt="" width="1920" height="1077" aria-hidden="true">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <p class="eyebrow light">Engineered protection. Built to last.</p>
+        <h1 id="hero-title">Protect Your Home<br>Before the Next Monsoon</h1>
+        <p class="hero-copy">Professional terrace waterproofing. Free inspection. Long-lasting protection.</p>
+        <div class="hero-actions">
+          <a class="button" href="#inspection-form" data-inspection-open>Book Free Inspection <span aria-hidden="true">→</span></a>
+          <a class="button button-ghost" href="#projects">View Projects</a>
+        </div>
+        <div class="hero-proof"><span><i aria-hidden="true">✓</i> Trained applicators</span><span><i aria-hidden="true">✓</i> Written warranty</span></div>
+      </div>
+      <a class="scroll-cue" href="#trust" aria-label="Scroll to our credentials"><span></span>Discover</a>
+    </section>
+
+    <!-- Trust bar -->
+    <section class="trust-bar" id="trust" aria-label="AQUVEX credentials">
+      <div class="container stat-grid">
+        <div class="stat reveal"><strong>Premium</strong><span>Materials Used</span></div>
+        <div class="stat reveal"><strong>Free</strong><span>Site Inspection</span></div>
+        <div class="stat reveal"><strong>Quality</strong><span>Final Inspection</span></div>
+        <div class="stat reveal"><strong>5–25 Year</strong><span>Warranty*</span></div>
+      </div>
+    </section>
+
+    <!-- Why waterproofing matters -->
+    <section class="story section" id="why">
+      <div class="container story-head reveal">
+        <p class="eyebrow">What water leaves behind</p>
+        <h2>Rain doesn’t need a wide opening.<br><span>It only needs time.</span></h2>
+      </div>
+      <div class="container story-grid">
+        <article class="story-card reveal"><img class="card-media" src="assets/images/rain-finds-the-weakness.webp" alt="" width="1200" height="800" loading="lazy"><span>01</span><div><h3>Rain finds the weakness</h3><p>Season after season, standing water searches for unsealed joints and porous concrete.</p></div></article>
+        <article class="story-card reveal"><img class="card-media" src="assets/images/moisture-moves-inward.webp" alt="" width="1200" height="800" loading="lazy"><span>02</span><div><h3>Moisture moves inward</h3><p>Water travels through the slab, often appearing far away from the original entry point.</p></div></article>
+        <article class="story-card reveal"><img class="card-media" src="assets/images/cracks-quietly-expand.webp" alt="" width="1200" height="800" loading="lazy"><span>03</span><div><h3>Cracks quietly expand</h3><p>Heat, movement and trapped moisture turn hairline cracks into wider structural concerns.</p></div></article>
+        <article class="story-card reveal"><img class="card-media" src="assets/images/repairs-become-expensive.webp" alt="" width="1200" height="800" loading="lazy"><span>04</span><div><h3>Repairs become expensive</h3><p>Paint peels, steel corrodes and indoor air quality suffers long before the damage is obvious.</p></div></article>
+      </div>
+      <p class="story-ending reveal">“A small crack today can become a costly repair tomorrow.”</p>
+    </section>
+
+    <!-- Our process -->
+    <section class="process section section-tint" id="process">
+      <div class="container section-heading reveal"><div><p class="eyebrow">Our process</p><h2>Precision at every layer.</h2></div><p>Every AQUVEX project follows a measured five-stage system. No shortcuts. No guesswork.</p></div>
+      <div class="container process-grid">
+        <article class="process-card reveal"><span class="step">01</span><img src="assets/images/inspection.webp" alt="AQUVEX specialist inspecting a terrace surface" width="900" height="600" loading="lazy"><h3>Inspection</h3><p>We identify the source, assess the substrate and measure the affected area.</p></article>
+        <article class="process-card reveal"><span class="step">02</span><img src="assets/images/pressure-washing.webp" alt="Terrace being professionally pressure washed" width="900" height="600" loading="lazy"><h3>Pressure Washing</h3><p>Dust, algae and weak surface material are removed for reliable adhesion.</p></article>
+        <article class="process-card reveal"><span class="step">03</span><img src="assets/images/crack-treatment.webp" alt="Detailed treatment of a crack in concrete" width="900" height="600" loading="lazy"><h3>Crack Treatment</h3><p>Cracks and junctions are repaired with flexible, purpose-selected compounds.</p></article>
+        <article class="process-card reveal"><span class="step">04</span><img src="assets/images/waterproof-coating.webp" alt="Waterproof membrane being applied to a terrace" width="900" height="600" loading="lazy"><h3>Waterproof Coating</h3><p>A calibrated multi-coat membrane forms a continuous protective barrier.</p></article>
+        <article class="process-card reveal"><span class="step">05</span><img src="assets/images/quality-inspection.webp" alt="Final quality inspection of a waterproofed terrace" width="900" height="600" loading="lazy"><h3>Quality Inspection</h3><p>Coverage, detailing and drainage are verified before final handover.</p></article>
+      </div>
+    </section>
+
+    <!-- Before and after -->
+    <section class="comparison-section section" id="projects">
+      <div class="container section-heading reveal"><div><p class="eyebrow">Visible transformation</p><h2>Before damage.<br>After AQUVEX.</h2></div><p>Drag the control to inspect a representative terrace restoration.</p></div>
+      <div class="container">
+        <div class="comparison reveal" data-comparison>
+          <img src="assets/images/terrace-after.webp" alt="Clean waterproofed terrace after AQUVEX treatment" width="1400" height="933" loading="lazy">
+          <div class="comparison-before"><img src="assets/images/terrace-before.webp" alt="Cracked terrace with standing water before treatment" width="1400" height="933" loading="lazy"></div>
+          <span class="compare-label before-label">Before</span><span class="compare-label after-label">After</span>
+          <label class="sr-only" for="compare-range">Reveal before and after image</label>
+          <input id="compare-range" type="range" min="0" max="100" value="50" aria-valuetext="50 percent before image visible">
+          <div class="compare-handle" aria-hidden="true"><span>↔</span></div>
+        </div>
+        <div class="project-strip reveal"><span>Residential Terrace · 1,850 sq. ft.</span><span>Crack repair + elastomeric membrane</span><span>Completed in 5 days</span></div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services section section-dark" id="services">
+      <div class="container section-heading light-heading reveal"><div><p class="eyebrow light">Specialist services</p><h2>One standard.<br>Complete protection.</h2></div><p>Focused solutions for every stage of water damage—from early detection to full-surface renewal.</p></div>
+      <div class="container services-grid">
+        <article class="service-card featured reveal"><img class="service-media" src="assets/images/waterproof-coating.webp" alt="" width="900" height="600" loading="lazy"><span>01</span><div><h3>Terrace Waterproofing</h3><p>Seamless systems designed around your terrace condition, drainage and exposure.</p><a href="#contact">Request an assessment <b aria-hidden="true">→</b></a></div></article>
+        <article class="service-card reveal"><img class="service-media" src="assets/images/moisture-moves-inward.webp" alt="" width="1200" height="800" loading="lazy"><span>02</span><div><h3>Leak Repair</h3><p>Source-first diagnosis and durable local repairs.</p><a href="#contact" aria-label="Request a leak repair assessment">Explore <b aria-hidden="true">→</b></a></div></article>
+        <article class="service-card reveal"><img class="service-media" src="assets/images/pressure-washing.webp" alt="" width="900" height="600" loading="lazy"><span>03</span><div><h3>Pressure Washing</h3><p>Professional preparation for a clean, bond-ready surface.</p><a href="#contact" aria-label="Request pressure washing">Explore <b aria-hidden="true">→</b></a></div></article>
+        <article class="service-card reveal"><img class="service-media" src="assets/images/crack-treatment.webp" alt="" width="900" height="600" loading="lazy"><span>04</span><div><h3>Crack Filling</h3><p>Flexible treatment for joints, edges and active cracks.</p><a href="#contact" aria-label="Request crack filling">Explore <b aria-hidden="true">→</b></a></div></article>
+        <article class="service-card reveal"><img class="service-media" src="assets/images/inspection.webp" alt="" width="900" height="600" loading="lazy"><span>05</span><div><h3>Waterproof Inspection</h3><p>A clear condition report before you commit to repair.</p><a href="#inspection-form" data-inspection-open aria-label="Book a waterproof inspection">Book free <b aria-hidden="true">→</b></a></div></article>
+      </div>
+    </section>
+
+    <!-- Why AQUVEX -->
+    <section class="advantages section">
+      <div class="container advantage-layout">
+        <div class="advantage-intro reveal"><p class="eyebrow">Why AQUVEX</p><h2>Confidence is built into the process.</h2><p>Clear recommendations, disciplined application and accountable aftercare—because protection should feel certain.</p><a class="text-link" href="#contact">Talk to a waterproofing specialist <span>→</span></a></div>
+        <ol class="timeline">
+          <li class="reveal"><span>01</span><div><h3>Premium Materials</h3><p>Proven systems matched to the surface, not a one-product-fits-all approach.</p></div></li>
+          <li class="reveal"><span>02</span><div><h3>Experienced Team</h3><p>Trained technicians who understand detailing, drainage and application conditions.</p></div></li>
+          <li class="reveal"><span>03</span><div><h3>Quality Inspection</h3><p>Stage checks and a final review before your project is signed off.</p></div></li>
+          <li class="reveal"><span>04</span><div><h3>Warranty</h3><p>Written protection with straightforward terms and responsive support.</p></div></li>
+          <li class="reveal"><span>05</span><div><h3>Transparent Pricing</h3><p>Itemised scope and pricing before work begins. No surprise additions.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Customer stories -->
+    <section class="testimonials section section-tint" id="stories">
+      <div class="container section-heading reveal"><div><p class="eyebrow">Customer stories</p><h2>Protection people<br>can feel.</h2></div><div class="slider-controls"><button type="button" data-prev aria-label="Previous story">←</button><button type="button" data-next aria-label="Next story">→</button></div></div>
+      <div class="container testimonial-slider reveal" aria-live="polite">
+        <article class="testimonial is-active"><div class="testimonial-image"><img src="assets/images/customer-manjula.webp" alt="Completed terrace waterproofing project for Manjula" width="1200" height="800" loading="lazy"></div><blockquote><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>“AQUVEX showed us exactly where the seepage began and explained every step. The terrace stayed completely dry through the heavy rains.”</p><footer><strong>Manjula</strong><span>JP Nagar, Bangalore · Terrace waterproofing</span></footer></blockquote></article>
+        <article class="testimonial"><div class="testimonial-image"><img src="assets/images/customer-bhagya.webp" alt="Completed terrace waterproofing project for Bhagya" width="1200" height="800" loading="lazy"></div><blockquote><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>“The team was punctual, tidy and precise. Their written scope made the whole project easy to understand, and there were no surprise charges.”</p><footer><strong>Bhagya</strong><span>JP Nagar, Bangalore · Terrace waterproofing</span></footer></blockquote></article>
+        <article class="testimonial"><div class="testimonial-image"><img src="assets/images/customer-venkata-shiva-reddy.webp" alt="Completed terrace waterproofing project for Venkata Shiva Reddy" width="1200" height="800" loading="lazy"></div><blockquote><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>“We had repaired the same crack twice before. AQUVEX found the real source, treated the joint correctly and followed up after the first rain.”</p><footer><strong>Venkata Shiva Reddy</strong><span>JP Nagar, Bangalore · Terrace waterproofing</span></footer></blockquote></article>
+      </div>
+      <div class="slider-dots" role="tablist" aria-label="Choose customer story"></div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq section" id="faq">
+      <div class="container faq-layout">
+        <div class="reveal"><p class="eyebrow">Frequently asked</p><h2>Clear answers,<br>before work begins.</h2><p>Still deciding what your terrace needs?</p><a class="text-link" href="#contact">Ask our inspection team <span>→</span></a></div>
+        <div class="accordion">
+          <article class="faq-item reveal"><h3><button type="button" aria-expanded="true" aria-controls="answer-1">How do I know if my terrace needs waterproofing?<span>−</span></button></h3><div id="answer-1" class="faq-answer"><p>Damp ceiling patches, peeling paint, musty odours, standing water and visible cracks are common warnings. A site inspection can trace the source before damage spreads.</p></div></article>
+          <article class="faq-item reveal"><h3><button type="button" aria-expanded="false" aria-controls="answer-2">How long does terrace waterproofing take?<span>+</span></button></h3><div id="answer-2" class="faq-answer" hidden><p>Most residential terraces take three to seven days, depending on area, repairs, weather and curing time. Your written scope includes a realistic schedule.</p></div></article>
+          <article class="faq-item reveal"><h3><button type="button" aria-expanded="false" aria-controls="answer-3">Can waterproofing be done during monsoon?<span>+</span></button></h3><div id="answer-3" class="faq-answer" hidden><p>Emergency repairs may be possible, but full coating systems need a dry weather window and suitable surface moisture levels. We check the forecast before scheduling.</p></div></article>
+          <article class="faq-item reveal"><h3><button type="button" aria-expanded="false" aria-controls="answer-4">What warranty do you provide?<span>+</span></button></h3><div id="answer-4" class="faq-answer" hidden><p>Warranty length depends on the selected system and substrate condition, with options up to ten years. Coverage and exclusions are provided in writing before work starts.</p></div></article>
+          <article class="faq-item reveal"><h3><button type="button" aria-expanded="false" aria-controls="answer-5">Is the inspection really free?<span>+</span></button></h3><div id="answer-5" class="faq-answer" hidden><p>Yes. For serviceable locations, we inspect the concern, discuss suitable solutions and share a transparent estimate without an inspection charge.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final call to action -->
+    <section class="final-cta" id="contact">
+      <div class="cta-orb" aria-hidden="true"></div>
+      <div class="container reveal">
+        <p class="eyebrow light">Before the next downpour</p><h2>Ready to Protect<br>Your Home?</h2><p>Book a no-obligation inspection and receive a clear, practical recommendation.</p>
+        <a class="button button-white" href="#inspection-form" data-inspection-open>Book Free Inspection <span aria-hidden="true">→</span></a>
+        <div class="contact-options"><a href="tel:+916362298379"><small>Call us</small>+91 63622 98379</a><a href="https://wa.me/916362298379?text=Hello%20AQUVEX%2C%20I%20would%20like%20to%20book%20a%20free%20waterproofing%20inspection." target="_blank" rel="noopener"><small>WhatsApp</small>Start a conversation ↗</a></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Free inspection enquiry dialog -->
+  <dialog class="inspection-dialog" id="inspection-dialog" aria-labelledby="inspection-title">
+    <div class="dialog-panel">
+      <button class="dialog-close" type="button" data-inspection-close aria-label="Close inspection form">×</button>
+      <div class="dialog-intro">
+        <p class="eyebrow">Free site inspection</p>
+        <h2 id="inspection-title">Tell us about your property.</h2>
+        <p>Share a few details and we’ll prepare your request in WhatsApp. Our team will contact you to confirm a convenient inspection time.</p>
+      </div>
+      <form id="inspection-form">
+        <div class="form-grid">
+          <label>Full name<input type="text" name="name" autocomplete="name" required placeholder="Your name"></label>
+          <label>Phone number<input type="tel" name="phone" autocomplete="tel" inputmode="tel" pattern="[0-9+\s-]{10,16}" required placeholder="10-digit mobile number"></label>
+          <label>Property location<input type="text" name="location" autocomplete="address-level2" required placeholder="Area and city"></label>
+          <label>Service needed
+            <select name="service" required>
+              <option value="">Select a service</option>
+              <option>Terrace Waterproofing</option>
+              <option>Leak Repair</option>
+              <option>Pressure Washing</option>
+              <option>Crack Filling</option>
+              <option>Waterproof Inspection</option>
+              <option>Not sure — need advice</option>
+            </select>
+          </label>
+        </div>
+        <label>What problem are you seeing?<textarea name="issue" rows="3" required placeholder="For example: ceiling dampness, terrace cracks or water seepage"></textarea></label>
+        <button class="button form-submit" type="submit"><img src="assets/icons/whatsapp.svg" alt="" width="24" height="24"> Send request on WhatsApp <span aria-hidden="true">→</span></button>
+        <p class="form-note">WhatsApp will open with your details ready to send to AQUVEX.</p>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand"><a class="brand" href="#top"><img src="assets/images/logo-circle.webp" alt="" width="192" height="192"><span>AQUVEX<small>Waterproofing</small></span></a><p>Engineering dry, durable homes with disciplined waterproofing systems.</p><div class="socials"><a href="https://www.instagram.com/aquvex.in?igsh=MWVnZmVwbDdqZ3U3dQ%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener" aria-label="AQUVEX on Instagram">ig</a><a href="https://www.facebook.com/share/1JB4MJyy1K/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="AQUVEX on Facebook">f</a></div></div>
+      <div><h2>Services</h2><a href="#services">Terrace waterproofing</a><a href="#services">Leak repair</a><a href="#services">Pressure washing</a><a href="#services">Crack filling</a></div>
+      <div><h2>Quick links</h2><a href="#why">Why waterproofing</a><a href="#process">Our process</a><a href="#projects">Projects</a><a href="#faq">FAQs</a></div>
+      <div><h2>Contact</h2><a href="tel:+916362298379">+91 63622 98379</a><p>Every day · 9:00 AM–6:00 PM</p><div class="service-map"><iframe src="https://www.google.com/maps?q=Bengaluru%2C%20Karnataka&amp;z=10&amp;output=embed" title="AQUVEX service area in Bangalore" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><a href="https://www.google.com/maps/search/?api=1&amp;query=Bengaluru%2C%20Karnataka" target="_blank" rel="noopener"><span>Service area</span><b>Bangalore · Open Google Maps ↗</b></a></div></div>
+    </div>
+    <div class="container footer-bottom"><p>© <span id="year"></span> AQUVEX Waterproofing. All rights reserved.</p><p>Protecting homes. Preserving value.</p></div>
+  </footer>
+
+  <!-- Persistent WhatsApp contact -->
+  <a class="whatsapp-float" href="https://wa.me/916362298379?text=Hello%20AQUVEX%2C%20I%20would%20like%20to%20book%20a%20free%20waterproofing%20inspection." target="_blank" rel="noopener" aria-label="Chat with AQUVEX on WhatsApp">
+    <img src="assets/icons/whatsapp.svg" alt="" width="30" height="30">
+    <span>WhatsApp</span>
+  </a>
 </body>
 </html>
