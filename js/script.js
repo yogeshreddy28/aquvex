@@ -149,7 +149,7 @@
       `Problem: ${data.get('issue')}`
     ].join('\n');
 
-    window.location.href = `https://wa.me/916362298379?text=${encodeURIComponent(message)}`;
+    window.location.href = `https://wa.me/919353193080?text=${encodeURIComponent(message)}`;
   });
 
   // Current copyright year
