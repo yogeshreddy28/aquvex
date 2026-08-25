@@ -145,6 +145,21 @@
     $("#content").innerHTML =
       `<section id="dashboard"><h2>Property overview</h2><p class="muted">Registered mobile: ${esc(d.customer.phone)}</p></section><section id="properties" class="detail"><h2>My Properties</h2><div class="grid">${d.properties.map((p) => `<article class="item"><h3>${esc(p.address)}</h3></article>`).join("") || "<p>No properties have been linked yet.</p>"}</div></section><section id="inspections" class="detail"><h2>Inspections</h2><div class="grid">${d.inspections.map((i) => `<article class="item"><h3>${esc(d.properties.find((p) => p.id === i.propertyId)?.address || "Property")}</h3><strong>${i.health.displayScore}/100 ${i.health.band.label}</strong></article>`).join("") || "<p>No inspections yet.</p>"}</div></section><section id="quotations" class="detail"><h2>Quotations</h2><div class="grid">${d.quotations.map((q) => `<article class="item"><h3>${esc(q.packageId)}</h3><p>₹${Number(q.finalAmount).toLocaleString("en-IN")} · Advance ₹${Number(q.bookingAdvanceAmount).toLocaleString("en-IN")}</p></article>`).join("") || "<p>No active quotation yet.</p>"}</div></section>`;
     await renderInspections(d.inspections || []);
+    await renderQuotations(d.quotations || []);
+  }
+  async function renderQuotations(quotations) {
+    const section = $("#quotations");
+    if (!section) return;
+    let bookings = [];
+    try { bookings = (await api("/api/customer/bookings")).results || await api("/api/customer/bookings"); } catch (_) {}
+    if (!quotations.length) { section.innerHTML = "<h2>Your Quotation</h2><p class=\"muted\">Your quotation is being prepared.</p>"; return; }
+    section.innerHTML = `<h2>Your Quotation</h2><div class="grid">${quotations.map((quote) => {
+      const booking = bookings.find((item) => item.quotation_id === quote.id || item.quotationId === quote.id);
+      const amount = `₹${Number(quote.finalAmount || 0).toLocaleString("en-IN")}`;
+      const advance = `₹${Number(quote.bookingAdvanceAmount || 0).toLocaleString("en-IN")}`;
+      if (booking || quote.bookingNumber) return `<article class="item"><h3>${esc(quote.packageId || "AQUVEX quotation")}</h3><p class="status">Booking Confirmed</p><p>${amount}</p><p class="muted">${esc(booking?.booking_number || booking?.bookingNumber || quote.bookingNumber || "")}</p></article>`;
+      return `<article class="item"><h3>${esc(quote.packageId || "AQUVEX quotation")}</h3><p>${amount}</p><p class="muted">Booking advance: ${advance}</p>${quote.expiresAt ? `<p class="muted">Valid until ${esc(quote.expiresAt)}</p>` : ""}<p class="status">${esc(quote.status || "Available")}</p><button type="button" disabled title="Online payment will be available soon">Pay Booking Advance</button></article>`;
+    }).join("")}</div>`;
   }
   async function renderInspections(inspections) {
     const section = $("#inspections");
