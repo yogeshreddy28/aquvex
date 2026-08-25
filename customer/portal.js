@@ -158,8 +158,25 @@
       const amount = `₹${Number(quote.finalAmount || 0).toLocaleString("en-IN")}`;
       const advance = `₹${Number(quote.bookingAdvanceAmount || 0).toLocaleString("en-IN")}`;
       if (booking || quote.bookingNumber) return `<article class="item"><h3>${esc(quote.packageId || "AQUVEX quotation")}</h3><p class="status">Booking Confirmed</p><p>${amount}</p><p class="muted">${esc(booking?.booking_number || booking?.bookingNumber || quote.bookingNumber || "")}</p></article>`;
-      return `<article class="item"><h3>${esc(quote.packageId || "AQUVEX quotation")}</h3><p>${amount}</p><p class="muted">Booking advance: ${advance}</p>${quote.expiresAt ? `<p class="muted">Valid until ${esc(quote.expiresAt)}</p>` : ""}<p class="status">${esc(quote.status || "Available")}</p><button type="button" disabled title="Online payment will be available soon">Pay Booking Advance</button></article>`;
+      return `<article class="item"><h3>${esc(quote.packageId || "AQUVEX quotation")}</h3><p>${amount}</p><p class="muted">Booking advance: ${advance}</p>${quote.expiresAt ? `<p class="muted">Valid until ${esc(quote.expiresAt)}</p>` : ""}<p class="status">${esc(quote.status || "Available")}</p><button type="button" class="pay-advance" data-quotation-id="${esc(quote.id)}">Pay Booking Advance</button></article>`;
     }).join("")}</div>`;
+    section.querySelectorAll(".pay-advance").forEach((button) => button.addEventListener("click", () => startPayment(button)));
+  }
+  async function startPayment(button) {
+    button.disabled = true; const original = button.textContent; button.textContent = "Starting payment…";
+    try {
+      const order = await api("/api/customer/bookings", { method: "POST", body: JSON.stringify({ quotationId: button.dataset.quotationId }) });
+      if (!window.Razorpay) throw new Error("Online payment is temporarily unavailable. Please contact AQUVEX to complete your booking.");
+      const checkout = new window.Razorpay({ key: order.keyId, amount: order.amount, currency: order.currency, order_id: order.orderId, name: "AQUVEX", handler: async (result) => {
+        button.textContent = "Verifying payment…";
+        await api("/api/customer/payments/verify", { method: "POST", body: JSON.stringify(result) });
+        message("Payment is being confirmed. Your booking status will update shortly."); await load();
+      }, modal: { ondismiss: () => { button.disabled = false; button.textContent = original; message("Payment was cancelled. You can try again when you're ready."); } } });
+      checkout.open();
+    } catch (error) {
+      button.disabled = false; button.textContent = original;
+      message(error.message?.includes("configured") ? "Online payment is temporarily unavailable. Please contact AQUVEX to complete your booking." : "We could not start payment. Please try again shortly.");
+    }
   }
   async function renderInspections(inspections) {
     const section = $("#inspections");
