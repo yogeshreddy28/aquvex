@@ -144,6 +144,26 @@
     $("#welcome").textContent = `Welcome, ${d.customer.fullName}`;
     $("#content").innerHTML =
       `<section id="dashboard"><h2>Property overview</h2><p class="muted">Registered mobile: ${esc(d.customer.phone)}</p></section><section id="properties" class="detail"><h2>My Properties</h2><div class="grid">${d.properties.map((p) => `<article class="item"><h3>${esc(p.address)}</h3></article>`).join("") || "<p>No properties have been linked yet.</p>"}</div></section><section id="inspections" class="detail"><h2>Inspections</h2><div class="grid">${d.inspections.map((i) => `<article class="item"><h3>${esc(d.properties.find((p) => p.id === i.propertyId)?.address || "Property")}</h3><strong>${i.health.displayScore}/100 ${i.health.band.label}</strong></article>`).join("") || "<p>No inspections yet.</p>"}</div></section><section id="quotations" class="detail"><h2>Quotations</h2><div class="grid">${d.quotations.map((q) => `<article class="item"><h3>${esc(q.packageId)}</h3><p>₹${Number(q.finalAmount).toLocaleString("en-IN")} · Advance ₹${Number(q.bookingAdvanceAmount).toLocaleString("en-IN")}</p></article>`).join("") || "<p>No active quotation yet.</p>"}</div></section>`;
+    await renderInspections(d.inspections || []);
+  }
+  async function renderInspections(inspections) {
+    const section = $("#inspections");
+    if (!section || !inspections.length) return;
+    section.innerHTML = "<h2>Inspections</h2><p class=\"muted\">Loading inspection details...</p>";
+    try {
+      const details = await Promise.all(inspections.map((item) => api(`/api/customer/inspections/${encodeURIComponent(item.id)}`)));
+      section.innerHTML = `<h2>Inspections</h2>${details.map(renderInspection).join("")}`;
+      section.querySelectorAll("img").forEach((image) => image.addEventListener("error", () => image.closest("figure")?.remove()));
+    } catch (error) {
+      section.innerHTML = "<h2>Inspections</h2><p class=\"muted\">Inspection details are temporarily unavailable.</p>";
+    }
+  }
+  function renderInspection(data) {
+    const inspection = data.inspection || {}, health = inspection.health || {}, assessment = inspection.assessment || {};
+    const answers = Object.entries(assessment.answers || {}).map(([name, value]) => `<li><strong>${esc(name.replaceAll("_", " "))}:</strong> ${esc(value)}</li>`).join("");
+    const measurements = (data.measurements || []).map((area) => `<li>${esc(area.name)}: ${Number(area.sqft || 0).toLocaleString("en-IN")} sq ft</li>`).join("");
+    const photos = (data.photos || []).map((photo) => `<figure><img loading="lazy" src="${API + photo.url}" alt="${esc(photo.category || "Inspection photo")}"><figcaption>${esc(photo.category || "Inspection photo")}</figcaption></figure>`).join("");
+    return `<article class="item detail"><h3>${esc(inspection.address || "Property inspection")}</h3><p class="muted">${esc(inspection.created_at || inspection.createdAt || "")}${inspection.inspector ? ` · ${esc(inspection.inspector)}` : ""}</p>${health.displayScore ? `<p class="score">${esc(health.displayScore)}/100</p><p>${esc(health.band?.label || "")}</p>` : ""}${answers ? `<h4>Condition assessment</h4><ul>${answers}</ul>` : ""}<h4>Measurements</h4>${measurements ? `<ul>${measurements}</ul>` : "<p class=\"muted\">No measurements are available.</p>"}${photos ? `<h4>Inspection photos</h4><div class="photos">${photos}</div>` : ""}</article>`;
   }
   function esc(v) {
     const e = document.createElement("div");
