@@ -146,6 +146,12 @@
       `<section id="dashboard"><h2>Property overview</h2><p class="muted">Registered mobile: ${esc(d.customer.phone)}</p></section><section id="properties" class="detail"><h2>My Properties</h2><div class="grid">${d.properties.map((p) => `<article class="item"><h3>${esc(p.address)}</h3></article>`).join("") || "<p>No properties have been linked yet.</p>"}</div></section><section id="inspections" class="detail"><h2>Inspections</h2><div class="grid">${d.inspections.map((i) => `<article class="item"><h3>${esc(d.properties.find((p) => p.id === i.propertyId)?.address || "Property")}</h3><strong>${i.health.displayScore}/100 ${i.health.band.label}</strong></article>`).join("") || "<p>No inspections yet.</p>"}</div></section><section id="quotations" class="detail"><h2>Quotations</h2><div class="grid">${d.quotations.map((q) => `<article class="item"><h3>${esc(q.packageId)}</h3><p>₹${Number(q.finalAmount).toLocaleString("en-IN")} · Advance ₹${Number(q.bookingAdvanceAmount).toLocaleString("en-IN")}</p></article>`).join("") || "<p>No active quotation yet.</p>"}</div></section>`;
     await renderInspections(d.inspections || []);
     await renderQuotations(d.quotations || []);
+    renderServiceAndReceipts(d.quotations || []);
+  }
+  function renderServiceAndReceipts(quotations) {
+    const confirmed = quotations.filter((quote) => quote.bookingNumber);
+    const receipts = quotations.filter((quote) => quote.receiptNumber);
+    $("#content").insertAdjacentHTML("beforeend", `<section class="detail"><h2>Your Service</h2>${confirmed.length ? `<div class="grid">${confirmed.map((quote) => `<article class="item"><h3>Booking Confirmed</h3><p>${esc(quote.bookingNumber)}</p><p class="muted">${esc(quote.packageId || "AQUVEX service")}</p></article>`).join("")}</div>` : "<p class=\"muted\">Your service details will appear after booking is confirmed.</p>"}</section><section class="detail"><h2>Receipts</h2>${receipts.length ? `<div class="grid">${receipts.map((quote) => `<article class="item"><h3>${esc(quote.receiptNumber)}</h3><p>${`₹${Number(quote.bookingAdvanceAmount || 0).toLocaleString("en-IN")}`}</p><p class="muted">${esc(quote.bookingNumber || "")}</p></article>`).join("")}</div>` : "<p class=\"muted\">Receipts will appear after a booking payment is confirmed.</p>"}</section>`);
   }
   async function renderQuotations(quotations) {
     const section = $("#quotations");
